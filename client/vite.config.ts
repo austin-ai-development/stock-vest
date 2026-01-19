@@ -6,5 +6,11 @@ export default defineConfig({
     plugins: [react()],
     server: {
         host: 'localhost', // Fixes IPv6/localhost mismatch
+        proxy: {
+            '/graphql': {
+                target: 'http://localhost:4000',
+                changeOrigin: true,
+            }
+        }
     }
 })
