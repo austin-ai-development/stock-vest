@@ -21,7 +21,7 @@ export const Button: React.FC<ButtonProps> = ({
         ghost: 'bg-transparent text-vv-text-secondary hover:text-vv-text-primary'
     };
 
-    const glowStyle = glow ? 'shadow-[0_0_15px_rgba(0,166,81,0.5)] hover:shadow-[0_0_20px_rgba(0,166,81,0.7)]' : '';
+    const glowStyle = glow ? 'shadow-[0_0_8px_rgba(0,166,81,0.4)] hover:shadow-[0_0_12px_rgba(0,166,81,0.6)]' : '';
 
     return (
         <button

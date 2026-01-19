@@ -27,7 +27,7 @@ export const SplashScreen: React.FC<SplashScreenProps> = ({ onComplete }) => {
         <div className="fixed inset-0 bg-vv-bg-primary flex flex-col items-center justify-center z-50 text-vv-text-primary p-4">
             <div className="max-w-2xl w-full border border-vv-border rounded-lg p-8 bg-vv-bg-secondary shadow-2xl relative overflow-hidden">
                 {/* Decorative elements */}
-                <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-vv-green to-vv-blue-500"></div>
+                <div className="absolute top-0 left-0 w-full h-1 bg-vv-green"></div>
 
                 <div className="text-center mb-8">
                     <h1 className="text-4xl font-bold mb-2 tracking-tight">
