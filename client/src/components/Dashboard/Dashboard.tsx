@@ -56,7 +56,7 @@ export const Dashboard: React.FC = () => {
                     </div>
 
                     {/* Top Movers: Mobile Order 2, Desktop Order 3 */}
-                    <div className="order-2 lg:order-3 h-64 shrink-0">
+                    <div className="order-2 lg:order-3 h-auto lg:h-64 shrink-0">
                         <TopMovers />
                     </div>
                 </div>
