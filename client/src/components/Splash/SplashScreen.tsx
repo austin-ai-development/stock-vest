@@ -59,7 +59,7 @@ export const SplashScreen: React.FC<SplashScreenProps> = ({ onComplete }) => {
                     <p className="text-xs text-vv-text-tertiary mt-4">Press Enter or Click to Continue</p>
                 </div>
 
-                <div className="mt-8 pt-4 border-t border-vv-border text-center text-xs text-vv-text-tertiary">
+                <div className="mt-8 mb-4 pt-4 border-t border-vv-border text-center text-xs text-vv-text-tertiary">
                     Built by Austin Vincelli-Evans • {new Date().toLocaleDateString('en-US', { month: 'long', year: 'numeric' })}
                 </div>
             </div>

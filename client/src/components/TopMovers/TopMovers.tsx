@@ -45,7 +45,7 @@ export const TopMovers: React.FC = () => {
     );
 
     return (
-        <div className="grid grid-cols-2 gap-4 h-full">
+        <div className="grid grid-cols-1 min-[450px]:grid-cols-2 gap-4 h-full">
             <Card title="Top Gainers" className="h-full">
                 {renderList(gainers, true)}
             </Card>
