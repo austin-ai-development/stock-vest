@@ -23,7 +23,7 @@ export const Watchlist: React.FC = () => {
 
     // 3. Get Stock Details for ALL symbols
     // Note: In real app, might want to batch or use subscription
-    const { data: stocksData, loading: stocksLoading } = useQuery(GET_STOCKS_BY_SYMBOLS, {
+    const { data: stocksData } = useQuery(GET_STOCKS_BY_SYMBOLS, {
         variables: { symbols },
         skip: symbols.length === 0,
         pollInterval: 10000 // Poll every 10s for real-time-ish updates
