@@ -4,7 +4,7 @@ A real-time stock tracking dashboard built with modern web technologies, featuri
 
 ## 🚀 Live Demo
 
-**[View Live App](https://your-heroku-app-url.herokuapp.com)** *(Update after deployment)*
+**[View Live App](https://stock-vest-demo-8828e2e32069.herokuapp.com/)**
 
 ## ✨ Features
 
