@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
+import { useQuery } from '@apollo/client';
 import { Button } from '../common/Button';
+import { GET_WATCHLIST, GET_TOP_MOVERS, GET_MARKET_INDICES } from '../../graphql/queries';
 
 interface SplashScreenProps {
     onComplete: () => void;
@@ -7,6 +9,19 @@ interface SplashScreenProps {
 
 export const SplashScreen: React.FC<SplashScreenProps> = ({ onComplete }) => {
     const [fading, setFading] = useState(false);
+    const [startPrefetch, setStartPrefetch] = useState(false);
+
+    // Start prefetching data after 1 second to ensure smooth splash screen rendering
+    useEffect(() => {
+        const timer = setTimeout(() => setStartPrefetch(true), 1000);
+        return () => clearTimeout(timer);
+    }, []);
+
+    // Prefetch critical data - Apollo Client will cache these results
+    // When Dashboard mounts, it will read from cache for instant rendering
+    useQuery(GET_WATCHLIST, { skip: !startPrefetch });
+    useQuery(GET_TOP_MOVERS, { skip: !startPrefetch });
+    useQuery(GET_MARKET_INDICES, { skip: !startPrefetch });
 
     useEffect(() => {
         const handleKeyPress = (e: KeyboardEvent) => {
@@ -24,8 +39,8 @@ export const SplashScreen: React.FC<SplashScreenProps> = ({ onComplete }) => {
     if (fading) return <div className="fixed inset-0 bg-vv-bg-primary transition-opacity duration-500 opacity-0 pointer-events-none z-50"></div>;
 
     return (
-        <div className="fixed inset-0 bg-vv-bg-primary flex flex-col items-center justify-center z-50 text-vv-text-primary p-4">
-            <div className="max-w-2xl w-full border border-vv-border rounded-lg p-8 bg-vv-bg-secondary shadow-2xl relative overflow-hidden">
+        <div className="fixed inset-0 bg-vv-bg-primary flex flex-col items-center justify-center z-50 text-vv-text-primary p-4 pb-safe">
+            <div className="max-w-2xl w-full border border-vv-border rounded-lg p-8 pb-6 bg-vv-bg-secondary shadow-2xl relative overflow-hidden max-h-[90vh] overflow-y-auto">
                 {/* Decorative elements */}
                 <div className="absolute top-0 left-0 w-full h-1 bg-vv-green"></div>
 
@@ -59,7 +74,7 @@ export const SplashScreen: React.FC<SplashScreenProps> = ({ onComplete }) => {
                     <p className="text-xs text-vv-text-tertiary mt-4">Press Enter or Click to Continue</p>
                 </div>
 
-                <div className="mt-8 mb-4 pt-4 border-t border-vv-border text-center text-xs text-vv-text-tertiary">
+                <div className="mt-6 pt-4 border-t border-vv-border text-center text-xs text-vv-text-tertiary">
                     Built by Austin Vincelli-Evans • {new Date().toLocaleDateString('en-US', { month: 'long', year: 'numeric' })}
                 </div>
             </div>

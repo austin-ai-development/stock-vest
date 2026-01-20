@@ -42,11 +42,11 @@ export const Dashboard: React.FC = () => {
 
                 {/* Center Panel: Chart, Top Movers, Market Overview (6 cols) */}
                 <div className="order-2 lg:order-2 lg:col-span-6 lg:h-full lg:min-h-0 flex flex-col gap-4">
-                    {/* On Mobile: Chart first, then Movers, then Overview at bottom */}
-                    {/* On Desktop: Overview first, then Chart, then Movers (We need to use order- classes inside flex too) */}
+                    {/* On Mobile: Chart first, then Market Overview, then Movers */}
+                    {/* On Desktop: Overview first, then Chart, then Movers */}
 
-                    {/* Market Overview: Mobile Order 3, Desktop Order 1 */}
-                    <div className="order-3 lg:order-1 shrink-0">
+                    {/* Market Overview: Mobile Order 2, Desktop Order 1 */}
+                    <div className="order-2 lg:order-1 shrink-0">
                         <MarketOverview />
                     </div>
 
@@ -55,8 +55,8 @@ export const Dashboard: React.FC = () => {
                         <StockChart />
                     </div>
 
-                    {/* Top Movers: Mobile Order 2, Desktop Order 3 */}
-                    <div className="order-2 lg:order-3 h-auto lg:h-64 shrink-0">
+                    {/* Top Movers: Mobile Order 3, Desktop Order 3 */}
+                    <div className="order-3 lg:order-3 h-auto lg:h-64 shrink-0">
                         <TopMovers />
                     </div>
                 </div>

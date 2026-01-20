@@ -28,7 +28,7 @@ export const MarketOverview: React.FC = () => {
                     >
                         <div className="text-vv-text-tertiary text-xs font-bold mb-1">{index.name}</div>
                         <div className="text-vv-text-primary font-bold text-lg">
-                            {index.value ? index.value.toFixed(2) : '0.00'}
+                            ${index.value ? index.value.toFixed(2) : '0.00'}
                         </div>
                         <div className={`text-sm font-medium ${index.change >= 0 ? 'text-vv-green' : 'text-vv-danger'}`}>
                             {index.change > 0 ? '+' : ''}{index.change.toFixed(2)} ({formatPercent(index.changePercent)})

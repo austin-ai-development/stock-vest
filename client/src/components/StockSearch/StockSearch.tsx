@@ -11,6 +11,7 @@ import { addSymbolOptimistic, selectSymbol } from '../../store/slices/watchlistS
 export const StockSearch: React.FC = () => {
     const [searchTerm, setSearchTerm] = useState('');
     const [results, setResults] = useState<any[]>([]);
+    const [hasSearched, setHasSearched] = useState(false);
     const watchlistSymbols = useAppSelector(state => state.watchlist.symbols);
 
     const [searchStocks, { loading, data, error }] = useLazyQuery(SEARCH_STOCKS);
@@ -27,6 +28,7 @@ export const StockSearch: React.FC = () => {
                 searchStocks({ variables: { query: searchTerm } });
             } else {
                 setResults([]);
+                setHasSearched(false);
             }
         }, 500);
 
@@ -36,6 +38,19 @@ export const StockSearch: React.FC = () => {
     useEffect(() => {
         if (data?.searchStocks) {
             setResults(data.searchStocks);
+            setHasSearched(true);
+
+            // On mobile, scroll to search results when they appear
+            if (window.innerWidth < 1024 && data.searchStocks.length > 0) {
+                setTimeout(() => {
+                    const searchElement = document.getElementById('stock-search-container');
+                    if (searchElement) {
+                        const yOffset = -20; // Small offset from top
+                        const y = searchElement.getBoundingClientRect().top + window.pageYOffset + yOffset;
+                        window.scrollTo({ top: y, behavior: 'smooth' });
+                    }
+                }, 100);
+            }
         }
     }, [data]);
 
@@ -54,7 +69,7 @@ export const StockSearch: React.FC = () => {
     };
 
     return (
-        <Card title="Stock Search" className="h-full">
+        <Card id="stock-search-container" title="Stock Search" className="h-full">
             <div className="relative mb-4">
                 <input
                     type="text"
@@ -67,7 +82,7 @@ export const StockSearch: React.FC = () => {
 
             <div className="space-y-2 flex-1 min-h-0 overflow-y-auto">
                 {loading && <LoadingSpinner />}
-                {!loading && results.length === 0 && searchTerm && (
+                {!loading && hasSearched && results.length === 0 && searchTerm && (
                     <div className="text-center text-vv-text-tertiary py-4">No results found</div>
                 )}
                 {results.map((stock) => (

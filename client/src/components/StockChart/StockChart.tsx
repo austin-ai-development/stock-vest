@@ -28,8 +28,8 @@ export const StockChart: React.FC = () => {
     }
 
     return (
-        <Card className="h-full flex flex-col p-4 overflow-hidden">
-            <div className="flex justify-between items-center mb-4">
+        <Card id="stock-chart-container" className="h-full flex flex-col p-4 overflow-hidden">
+            <div className="flex justify-between items-center mb-4 gap-2">
                 <div>
                     <h2 className="text-2xl font-bold text-vv-text-primary">{selectedSymbol}</h2>
                     {/* Add more profile info here */}
@@ -39,7 +39,7 @@ export const StockChart: React.FC = () => {
                         <button
                             key={range}
                             onClick={() => setTimeRange(range)}
-                            className={`px-3 py-1 text-sm rounded-md transition-colors ${timeRange === range ? 'bg-vv-green text-white shadow-sm' : 'text-vv-text-secondary hover:text-vv-text-primary'}`}
+                            className={`px-2 py-1 text-xs min-[400px]:px-3 min-[400px]:text-sm rounded-md transition-colors ${timeRange === range ? 'bg-vv-green text-white shadow-sm' : 'text-vv-text-secondary hover:text-vv-text-primary'}`}
                         >
                             {range}
                         </button>
