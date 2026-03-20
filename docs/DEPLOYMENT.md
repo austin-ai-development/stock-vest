@@ -2,7 +2,7 @@
 
 ## Prerequisites
 
-- ✅ GitHub account: `https://github.com/austin-ai-development/`
+- ✅ GitHub account: `https://github.com/your-username/`
 - ✅ Heroku account (already set up)
 - ✅ Finnhub API key (already configured in `server/.env`)
 - ✅ Git installed locally
@@ -63,7 +63,7 @@ EOF
 
 ```bash
 # Navigate to project root
-cd /Users/austin/Desktop/stock_vest
+cd /path/to/stock_vest
 
 # Initialize git (if not already done)
 git init
@@ -80,7 +80,7 @@ git commit -m "Initial commit: StockVest application ready for deployment"
 ## Step 3: Create GitHub Repository
 
 ### 3.1 Create Repo on GitHub
-1. Go to: `https://github.com/austin-ai-development/`
+1. Go to: `https://github.com/your-username/`
 2. Click **"New"** (green button)
 3. Repository name: `stock-vest`
 4. Description: `Real-time stock tracking dashboard with live market data`
@@ -91,7 +91,7 @@ git commit -m "Initial commit: StockVest application ready for deployment"
 ### 3.2 Push to GitHub
 ```bash
 # Add remote origin
-git remote add origin https://github.com/austin-ai-development/stock-vest.git
+git remote add origin https://github.com/your-username/stock-vest.git
 
 # Push to main branch
 git branch -M main
@@ -282,4 +282,4 @@ git push heroku main
 
 **Your app will be live at:** `https://your-app-name.herokuapp.com`
 
-**GitHub repo:** `https://github.com/austin-ai-development/stock-vest`
+**GitHub repo:** `https://github.com/your-username/stock-vest`
